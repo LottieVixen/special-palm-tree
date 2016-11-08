@@ -1,18 +1,32 @@
 <html>
 	<head>
+		<style>
+		#in {
+		    border:solid 5px #ff00ff;
+		    -moz-border-radius: 75px;
+		    -webkit-border-radius: 75px;
+		    border-radius: 75px;
+		}
+		#out {
+		    border:solid 5px #ff00ff;
+		    -moz-border-radius: 75px;
+		    -webkit-border-radius: 75px;
+		    border-radius: 75px;
+		}
+		</style>
 		<script>
+			String.prototype.toProperCase = function () {
+    			return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+			};
 			function onChange(){
 				var intext = document.getElementsByTagName("input")[0].value;
 				intext = intext.replace(/[EFRSKIMLCAYNefrskimlcayn]/g,'');
-				document.getElementsByTagName("input")[1].value = intext;
+				document.getElementsByTagName("input")[1].value = intext.toProperCase();
 			};
 		</script>
 	</head>
 	<body>
 		<input id="in" type="text" onkeyup="onChange()" label="Name"/>
 		<input id="out"type="text" readonly label="Result"/>
-		<script>
-		init();
-		</script>
 	</body>
 </html>
